@@ -1,6 +1,1 @@
-# README for the Grade Sheet
-# --------------------------
-#
-# The grade sheet is used as the primary form of communication between the system and one's classes
-# 
-#
+
