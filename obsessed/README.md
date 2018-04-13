@@ -2,10 +2,6 @@
 
 The grade sheet is used as the primary form of communication between the system and one's classes. The grammar for Obsessed's language is defined below, as well as any keywords that are used in the language.
 
-##### Table of Contents
-[Language Syntax](#Language-Syntax)
-[Keywords](#Keywords)
-
 # Language Syntax
 ## Creating Assignment Categories
 
