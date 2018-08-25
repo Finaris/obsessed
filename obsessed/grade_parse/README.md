@@ -33,7 +33,7 @@ If the user wishes to override the default behavior of a particular category, th
 "Category Name"(keyword1=value1, keyword2=value2, ...): 1, 2, 3, ...
 ```
 
-In the above line, we create a new category with the name Category Name and define a list of grades. Furthermore, an additional set of parameters is provided via a list of key-value pairs enclosed in parentheses. More can be learned about regarding keywords in the Keywords section, where specific keywords are described in greater detail.
+In the above line, we create a new category with the name Category Name and define a list of grades. Furthermore, an additional set of parameters is provided via a list of key-value pairs enclosed in parentheses. More can be learned about keywords in the Keywords section, where specific keywords are described in greater detail.
 
 ##### Example
 
