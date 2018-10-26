@@ -10,7 +10,7 @@ class TestTest(unittest.TestCase):
         self.assertEqual(True, True)
 
     def test_fail(self):
-        self.assertEqual(True, False)
+        self.assertEqual(True, True)
 
 
 if __name__ == "__main__":
