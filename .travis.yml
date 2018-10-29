@@ -14,5 +14,5 @@ install:
 
 # Command to run tests.
 script:
-  - python -m unittest discover obsessed/grade_parse
+  - python -m unittest discover obsessed_tests
 
