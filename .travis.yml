@@ -14,5 +14,5 @@ install:
 
 # Command to run tests.
 script:
-  - python -m unittest discover obsessed_tests
+  - python -m unittest discover
 

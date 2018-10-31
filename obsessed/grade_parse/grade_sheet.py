@@ -1,20 +1,14 @@
-import sys
-from antlr4 import *
-from GradeSheetLexer import GradeSheetLexer
-from GradeSheetParser import GradeSheetParser
+"""
+This module contains all information relating to the structure of a GradeSheet, which encompasses all data in a
+*.gs* file.
+"""
 
 
-class GradeSheetListener(ParseTreeListener):
-    def enterR(self, ctx):
-        print("Hello: %s" % ctx.ID())
+class GradeSheet:
+    """
+    Overall container of all logic present in a *.gs* file. This object is interacted with outside of the module.
+    """
 
+    def __init__(self):
+        pass
 
-if __name__ == "__main__":
-    inp = FileStream("temp.txt")
-    lexer = GradeSheetLexer(inp)
-    stream = CommonTokenStream(lexer)
-    parser = GradeSheetParser(stream)
-    tree = parser.r()
-    walker = ParseTreeWalker()
-    listener = GradeSheetListener()
-    walker.walk(listener, tree)
