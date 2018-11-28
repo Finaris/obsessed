@@ -1,61 +1,82 @@
 # Introduction
 
-The grade sheet is used as the primary form of communication between the system and one's classes. The grammar for Obsessed's language is defined below, as well as any keywords that are used in the language.
+The grade sheet (*.gs* files) is used as the primary form of communication between the system and one's classes. The 
+grammar for Obsessed's language is defined below, as well as any keywords that are used in the language.
 
 [//]: # (TODO: Add a table of contents)
 # Language Syntax
+
+## Defining a Header
+At the beginning of every *.gs* file, a header containing metadata can be defined. This is not required and completely 
+optional. Below are the various keywords that can be defined here. 
+* `author`: The name (or names) of the individuals involved in creating the grade sheet.
+* `creation date`: The date that the grade sheet was created.
+* `e-mail`: The e-mail address of the grade sheet's maintainer.
+* `last updated`: The date that the grade sheet was last updated.
+* `name`: The name of the grade sheet. 
+* `version`: The version (or iteration) that the grade sheet is currently on.
+
+Further header variables are subject to addition in future updates.
 ## Creating Assignment Categories
 
 New categories of assignments can be defined in the following format:
 
 ```
-"Category Name": 1, 2, 3, ...
+[Category Name]: 1, 2, 3, ...
 ```
 
-The above line of code creates a new category with the name Category Name (note the enclosing quotation marks in the code). A colon will separate the name of the category, and grades will be defined in a comma-separated list. This will assume default behavior for grades, where the maximum score for an individual assignment is 100 and the weight of the category is evenly distributed across all categories (for example, if there are 5 categories then each category will have a
-weight of 20%).
+The above line of code creates a new category with the name "Category Name". A colon will separate the name of the 
+category, and grades will be defined in a comma-separated list. This will assume default behavior for grades, where the 
+maximum score for an individual assignment is 100 and the weight of the category is evenly distributed across all 
+categories (for example, if there are 5 categories then each category will have a weight of 20%).
 
 ##### Example
 
-Below is a sample grade sheet, where we have a class which grades all assignments out of 100 and each category has the same weight (33%):
+Below is a sample grade sheet, where we have a class which grades all assignments out of 100 and each category has the 
+same weight (33%):
 
 ```
-"Homework": 85, 67, 23
-"Tests": 79, 93
-"Attendance": 75
+Homework: 85, 67, 23
+Tests: 79, 93
+Attendance: 75
 ```
 
 ## Overriding Defaults
 
 ### Using Keywords
-If the user wishes to override the default behavior of a particular category, then they will be allowed to specify using a list of mappings between keywords and values enclosed in parentheses. It follows the following format:
+If the user wishes to override the default behavior of a particular category, then they will be allowed to specify using
+ a list of mappings between keywords and values enclosed in parentheses. It follows the following format:
 
 ```
-"Category Name"(keyword1=value1, keyword2=value2, ...): 1, 2, 3, ...
+[Category Name](keyword1=value1, keyword2=value2, ...): 1, 2, ... 
 ```
 
-In the above line, we create a new category with the name Category Name and define a list of grades. Furthermore, an additional set of parameters is provided via a list of key-value pairs enclosed in parentheses. More can be learned about keywords in the Keywords section, where specific keywords are described in greater detail.
+In the above line, we create a new category with the name "Category Name" and define a list of grades. Furthermore, an 
+additional set of parameters is provided via a list of key-value pairs enclosed in parentheses. More can be learned 
+about keywords in the Keywords section, where specific keywords are described in greater detail.
 
 ##### Example
 
-In the below example, two categories of assignments are created, one which is called "Homework" that is weighted at 40% of the total grade (each assignment is out of 100 points by default). The second category is "Tests," which is weighted at 60% of the total grade and each individual assignments is graded out of 50 points.
+In the below example, two categories of assignments are created, one which is called "Homework" that is weighted at 40% 
+of the total grade (each assignment is out of 100 points by default). The second category is "Tests", which is weighted 
+at 60% of the total grade and each individual assignments is graded out of 50 points.
 
 ```
-"Homework"(weight=.4): 85, 67, 23
-"Tests"(weight=.6, max=50): 45, 36
+Homework(weight=.4): 85, 67, 23
+Tests(weight=.6, max=50): 45, 36
 ```
 
 ### Different Maximums for Assignments in Same Category
 In the case a user has varying maximum points for assignments in the same category, we can implement an inline override for the default maximum of the category. For example:
 ```
-"[Category Name]": n/m
+[Category Name]: n/m
 ```
 The above line will create a new category with one grade with value `n` that is graded out of `m` points.
 
 ##### Example
 If a user has 5 tests, all of which are graded out of 100 (except for one which is graded out of 50), they would write the following line:
 ```
-"Tests": 78, 90, 65, 44/50, 89
+Tests: 78, 90, 65, 44/50, 89
 ```
 
 # Keywords
@@ -68,7 +89,7 @@ Below are definitions and examples of various keywords in the language.
 ##### Example
 If the user wishes to create a category named "tests" where tests are weighted as 70% of the overall class grade, they would write the following line:
 ```
-"Tests"(weight=.7): ...
+Tests(weight=.7): ...
 ```
 
 ## `max`
@@ -77,5 +98,5 @@ If the user wishes to create a category named "tests" where tests are weighted a
 ##### Example
 If the user wishes to state that all homework will be graded out of 10 points, then they would write the following line:
 ```
-"Homework"(max=10): ...
+Homework(max=10): ...
 ```
