@@ -11,5 +11,6 @@ class TestGradeSheet(unittest.TestCase):
     def test_hash(self):
         pass
 
+
 if __name__ == "__main__":
     unittest.main()
