@@ -126,7 +126,7 @@ class TestCategory(unittest.TestCase):
 
     """ Test(s) for __repr__ """
     def test_repr(self):
-        expected = "Category({0}, {1}, {2})".format(repr(TEST_NAME_ONE),
+        expected = "Category({0}, {1}, {2})".format(TEST_NAME_ONE,
                                                     repr([TEST_GRADE_HOMEWORK_ONE, TEST_GRADE_HOMEWORK_TWO]), {})
         actual = repr(TEST_CATEGORY_ONE)
         self.assertEqual(expected, actual)
@@ -154,7 +154,7 @@ class TestGrade(unittest.TestCase):
 
     """ Test(s) for __repr__ """
     def test_repr(self):
-        expected = "Grade({0}, {1}, {2})".format(repr(TEST_NAME_ONE), TEST_VALUE_ONE, DEFAULT_GRADE_MAXIMUM)
+        expected = "Grade({0}, {1}, {2})".format(TEST_NAME_ONE, TEST_VALUE_ONE, DEFAULT_GRADE_MAXIMUM)
         actual = repr(TEST_GRADE_HOMEWORK_ONE)
         self.assertEqual(expected, actual)
 

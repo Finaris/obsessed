@@ -56,8 +56,7 @@ class Category(GradeSheetGeneric):
         self.keywords = keywords
 
     def __repr__(self):
-        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, repr(self.name),
-                                           repr(self.grades), repr(self.keywords))
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, repr(self.grades), repr(self.keywords))
 
 
 class Grade(GradeSheetGeneric):
@@ -77,5 +76,4 @@ class Grade(GradeSheetGeneric):
         self.maximum = maximum
 
     def __repr__(self):
-        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, repr(self.name), repr(self.value),
-                                           repr(self.maximum))
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, self.value, self.maximum)
