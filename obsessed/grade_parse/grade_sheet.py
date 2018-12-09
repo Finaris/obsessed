@@ -2,6 +2,7 @@
 This module contains all information relating to the structure of a GradeSheet, which encompasses all data in a
 .gs file.
 """
+import collections
 
 
 class GradeSheetGeneric:
@@ -15,6 +16,10 @@ class GradeSheetGeneric:
 
     def __eq__(self, other):
         return isinstance(other, self.__class__) and vars(self) == vars(other)
+
+    def __hash__(self):
+        return sum(hash(value) if isinstance(value, collections.Hashable) else hash(str(value))
+                   for value in vars(self).values())
 
     def __str__(self):
         return self._STRING_FIELD_SEPARATOR.join("{0}: {1}".format(field.capitalize(), value)
@@ -36,7 +41,7 @@ class GradeSheet(GradeSheetGeneric):
         self.categories = categories
 
     def __repr__(self):
-        return "{0}({1}, {2})".format(self.__class__.__name__, repr(self.header), repr(self.categories))
+        return "{0}({1}, {2})".format(self.__class__.__name__, self.header, repr(self.categories))
 
 
 class Category(GradeSheetGeneric):
@@ -56,7 +61,7 @@ class Category(GradeSheetGeneric):
         self.keywords = keywords
 
     def __repr__(self):
-        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, repr(self.grades), repr(self.keywords))
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, repr(self.grades), self.keywords)
 
 
 class Grade(GradeSheetGeneric):

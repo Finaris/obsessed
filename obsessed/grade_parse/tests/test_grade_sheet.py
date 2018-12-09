@@ -44,10 +44,10 @@ TEST_KEYWORDS = {'max': 80}
 TEST_GENERIC_NO_FIELDS_A = GenericSubclassNoFieldsA()
 TEST_GENERIC_NO_FIELDS_A_DUPE = GenericSubclassNoFieldsA()
 TEST_GENERIC_NO_FIELDS_B = GenericSubclassNoFieldsB()
-TEST_GENERIC_THREE_FIELDS_A_ONE = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_TWO)
-TEST_GENERIC_THREE_FIELDS_A_ONE_DUPE = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_TWO)
-TEST_GENERIC_THREE_FIELDS_A_TWO = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_THREE)
-TEST_GENERIC_THREE_FIELDS_B = GenericSubclassTwoFieldsB(TEST_VALUE_ONE, TEST_VALUE_TWO)
+TEST_GENERIC_TWO_FIELDS_A_ONE = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_TWO)
+TEST_GENERIC_TWO_FIELDS_A_ONE_DUPE = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_TWO)
+TEST_GENERIC_TWO_FIELDS_A_TWO = GenericSubclassTwoFieldsA(TEST_VALUE_ONE, TEST_VALUE_THREE)
+TEST_GENERIC_TWO_FIELDS_B = GenericSubclassTwoFieldsB(TEST_VALUE_ONE, TEST_VALUE_TWO)
 
 TEST_GRADE_HOMEWORK_ONE = Grade(TEST_NAME_ONE, TEST_VALUE_ONE)
 TEST_GRADE_HOMEWORK_ONE_DUPE = Grade(TEST_NAME_ONE, TEST_VALUE_ONE)
@@ -75,18 +75,22 @@ class TestGradeSheetGeneric(unittest.TestCase):
         self.assertEqual(TEST_GENERIC_NO_FIELDS_A, TEST_GENERIC_NO_FIELDS_A_DUPE)
 
     def test_eq_dif_object_same_fields(self):
-        self.assertNotEqual(TEST_GENERIC_THREE_FIELDS_A_ONE, TEST_GENERIC_THREE_FIELDS_B)
+        self.assertNotEqual(TEST_GENERIC_TWO_FIELDS_A_ONE, TEST_GENERIC_TWO_FIELDS_B)
 
     def test_eq_same_object_dif_fields(self):
-        self.assertNotEqual(TEST_GENERIC_THREE_FIELDS_A_ONE, TEST_GENERIC_THREE_FIELDS_A_TWO)
+        self.assertNotEqual(TEST_GENERIC_TWO_FIELDS_A_ONE, TEST_GENERIC_TWO_FIELDS_A_TWO)
 
     def test_eq_same_object_same_fields(self):
-        self.assertEqual(TEST_GENERIC_THREE_FIELDS_A_ONE, TEST_GENERIC_THREE_FIELDS_A_ONE_DUPE)
+        self.assertEqual(TEST_GENERIC_TWO_FIELDS_A_ONE, TEST_GENERIC_TWO_FIELDS_A_ONE_DUPE)
+
+    """ Test(s) for __hash__ """
+    def test_hash_equal(self):
+        self.assertEqual(hash(TEST_GENERIC_TWO_FIELDS_A_ONE), hash(TEST_GENERIC_TWO_FIELDS_A_ONE_DUPE))
 
     """ Test(s) for __str__ """
     def test_str(self):
         expected = "X: {0}{1}Y: {2}".format(TEST_VALUE_ONE, GradeSheetGeneric._STRING_FIELD_SEPARATOR, TEST_VALUE_TWO)
-        actual = str(TEST_GENERIC_THREE_FIELDS_A_ONE)
+        actual = str(TEST_GENERIC_TWO_FIELDS_A_ONE)
         self.assertEqual(expected, actual)
 
 
@@ -99,6 +103,10 @@ class TestGradeSheet(unittest.TestCase):
 
     def test_eq_is_not_equal(self):
         self.assertNotEqual(TEST_GRADE_SHEET_ONE, TEST_GRADE_SHEET_TWO)
+
+    """ Test(s) for __hash__ """
+    def test_hash_equal(self):
+        self.assertEqual(hash(TEST_GRADE_SHEET_ONE), hash(TEST_GRADE_SHEET_ONE_DUPE))
 
     """ Test(s) for __repr__ """
     def test_repr(self):
@@ -123,6 +131,10 @@ class TestCategory(unittest.TestCase):
 
     def test_eq_is_not_equal(self):
         self.assertNotEqual(TEST_CATEGORY_ONE, TEST_CATEGORY_TWO)
+
+    """ Test(s) for __hash__ """
+    def test_hash_equal(self):
+        self.assertEqual(hash(TEST_CATEGORY_ONE), hash(TEST_CATEGORY_ONE_DUPE))
 
     """ Test(s) for __repr__ """
     def test_repr(self):
@@ -151,6 +163,10 @@ class TestGrade(unittest.TestCase):
 
     def test_eq_is_not_equal(self):
         self.assertNotEqual(TEST_GRADE_HOMEWORK_ONE, TEST_GRADE_HOMEWORK_TWO)
+
+    """ Test(s) for __hash__ """
+    def test_hash_equal(self):
+        self.assertEqual(hash(TEST_GRADE_HOMEWORK_ONE), hash(TEST_GRADE_HOMEWORK_ONE_DUPE))
 
     """ Test(s) for __repr__ """
     def test_repr(self):
