@@ -16,12 +16,9 @@ class GradeSheetGeneric:
     def __eq__(self, other):
         return isinstance(other, self.__class__) and vars(self) == vars(other)
 
-    def __repr__(self):
-        return "{0}({1})".format(self.__class__.__name__, ", ".join(map(repr, vars(self).values())))
-
     def __str__(self):
         return self._STRING_FIELD_SEPARATOR.join("{0}: {1}".format(field.capitalize(), value)
-                                                 for field, value in vars(self).items())
+                                                 for field, value in sorted(vars(self).items()))
 
 
 class GradeSheet(GradeSheetGeneric):
@@ -37,6 +34,9 @@ class GradeSheet(GradeSheetGeneric):
         """
         self.header = header
         self.categories = categories
+
+    def __repr__(self):
+        return "{0}({1}, {2})".format(self.__class__.__name__, repr(self.header), repr(self.categories))
 
 
 class Category(GradeSheetGeneric):
@@ -55,6 +55,10 @@ class Category(GradeSheetGeneric):
         self.grades = grades
         self.keywords = keywords
 
+    def __repr__(self):
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, repr(self.name),
+                                           repr(self.grades), repr(self.keywords))
+
 
 class Grade(GradeSheetGeneric):
     """
@@ -71,3 +75,7 @@ class Grade(GradeSheetGeneric):
         self.name = name
         self.value = value
         self.maximum = maximum
+
+    def __repr__(self):
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, repr(self.name), repr(self.value),
+                                           repr(self.maximum))
