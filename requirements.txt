@@ -1,2 +1,5 @@
 # ANTLR is required in order to assemble this project. One can download ANTLR, as well as find instructions on how to
 # set it up on various systems, at http://www.antlr.org/
+
+# ANTLR Python packages
+antlr4-python3-runtime
