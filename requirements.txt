@@ -1,5 +1,6 @@
-# ANTLR is required in order to assemble this project. One can download ANTLR, as well as find instructions on how to
-# set it up on various systems, at http://www.antlr.org/
+# ANTLR is required in order to update the parser of the Obsessed language to reflect any local changes to its grammar.
+# One can download ANTLR, as well as find instructions on how to set it up on various systems, at http://www.antlr.org/
+# For general usage, however, the ANTLR runtime libraries should be sufficient.
 
-# ANTLR Python packages
+# ANTLR Python 3 packages
 antlr4-python3-runtime
