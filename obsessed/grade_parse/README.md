@@ -16,7 +16,19 @@ optional. Below are the various keywords that can be defined here.
 * `name`: The name of the grade sheet. 
 * `version`: The version (or iteration) that the grade sheet is currently on.
 
-Further header variables are subject to addition in future updates.
+When defining a header variable, it must be assigned to a string value (note the quotation marks) which will then be 
+parsed. Further header variables are subject to addition in future updates.
+
+**NOTE**: String values will accept any unicode character. If quotation marks must be in the string value, they can be 
+specified by providing a backslash followed by a quotation mark, i.e. `"This is a \"nested\" string"`.
+
+##### Example
+
+``` 
+author = "Finaris"
+name = "6.813"
+```
+
 ## Creating Assignment Categories
 
 New categories of assignments can be defined in the following format:
@@ -28,7 +40,8 @@ New categories of assignments can be defined in the following format:
 The above line of code creates a new category with the name "Category Name". A colon will separate the name of the 
 category, and grades will be defined in a comma-separated list. This will assume default behavior for grades, where the 
 maximum score for an individual assignment is 100 and the weight of the category is evenly distributed across all 
-categories (for example, if there are 5 categories then each category will have a weight of 20%).
+categories (for example, if there are 5 categories then each category will have a weight of 20%). When defining the name
+of a category, it must be a string value (i.e. enclose in quotation marks).
 
 ##### Example
 
@@ -36,9 +49,9 @@ Below is a sample grade sheet, where we have a class which grades all assignment
 same weight (33%):
 
 ```
-Homework: 85, 67, 23
-Tests: 79, 93
-Attendance: 75
+"Homework": 85, 67, 23
+"Tests": 79, 93
+"Attendance": 75
 ```
 
 ## Overriding Defaults
@@ -62,8 +75,8 @@ of the total grade (each assignment is out of 100 points by default). The second
 at 60% of the total grade and each individual assignments is graded out of 50 points.
 
 ```
-Homework(weight=.4): 85, 67, 23
-Tests(weight=.6, max=50): 45, 36
+"Homework"(weight=.4): 85, 67, 23
+"Tests"(weight=.6, max=50): 45, 36
 ```
 
 ### Different Maximums for Assignments in Same Category
@@ -76,7 +89,7 @@ The above line will create a new category with one grade with value `n` that is 
 ##### Example
 If a user has 5 tests, all of which are graded out of 100 (except for one which is graded out of 50), they would write the following line:
 ```
-Tests: 78, 90, 65, 44/50, 89
+"Tests": 78, 90, 65, 44/50, 89
 ```
 
 # Keywords
@@ -89,7 +102,7 @@ Below are definitions and examples of various keywords in the language.
 ##### Example
 If the user wishes to create a category named "tests" where tests are weighted as 70% of the overall class grade, they would write the following line:
 ```
-Tests(weight=.7): ...
+"Tests"(weight=.7): ...
 ```
 
 ## `max`
@@ -98,5 +111,5 @@ Tests(weight=.7): ...
 ##### Example
 If the user wishes to state that all homework will be graded out of 10 points, then they would write the following line:
 ```
-Homework(max=10): ...
+"Homework"(max=10): ...
 ```
