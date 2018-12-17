@@ -3,3 +3,4 @@ from .grade_sheet import Category
 from .grade_sheet import Grade
 from .grade_sheet import GradeSheet
 from .grade_sheet import GradeSheetGeneric
+from .parse_grade_sheet import ParseGradeSheet
