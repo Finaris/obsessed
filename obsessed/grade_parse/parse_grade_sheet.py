@@ -45,8 +45,3 @@ class ParseGradeSheet:
         tree = parser.root()
         visitor = GradeSheetVisitor()
         return visitor.visit(tree)
-
-
-if __name__ == "__main__":
-    out = ParseGradeSheet.from_file("tests/test_grade_sheet_data/6813.gs")
-    print(out)

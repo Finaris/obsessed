@@ -88,16 +88,8 @@ SIMPLE_WORD
     ;
 
 NUMBER
-    : DECIMAL | INTEGER
-    ;
-
-DECIMAL
-    : ([0-9]+ PERIOD [0-9]*)
-    | ([0-9]* PERIOD [0-9]+)
-    ;
-
-INTEGER
-    : [0-9]+
+    : ([0-9]+ PERIOD? [0-9]*)
+    | ([0-9]* PERIOD? [0-9]+)
     ;
 
 STRING_WORD

@@ -49,19 +49,19 @@ class Category(GradeSheetGeneric):
     Contains information pertaining to a single set of class grades, including keyword modifiers and the actual grades.
     """
 
-    def __init__(self, name, grades=None, keywords=None):
+    def __init__(self, name, keywords=None, grades=None):
         """
         Each Category contains:
             - name: (str) the name of the specified Category
-            - grades: (list) an ordered list of Grade objects pertaining to ap articular Category
             - keywords: (dict) a mapping of specified keywords to their associated values
+            - grades: (list) an ordered list of Grade objects pertaining to ap articular Category
         """
         self.name = name
-        self.grades = grades
         self.keywords = keywords
+        self.grades = grades
 
     def __repr__(self):
-        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, repr(self.grades), self.keywords)
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, self.keywords, repr(self.grades))
 
 
 class Grade(GradeSheetGeneric):

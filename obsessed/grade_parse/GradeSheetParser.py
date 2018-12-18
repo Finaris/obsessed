@@ -1,4 +1,4 @@
-# Generated from GradeSheet.g4 by ANTLR 4.7.1
+# Generated from obsessed/grade_parse/GradeSheet.g4 by ANTLR 4.7.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -7,7 +7,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16")
         buf.write("J\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\4\n\t\n\3\2\5\2\26\n\2\3\2\5\2\31\n\2\3\3")
         buf.write("\6\3\34\n\3\r\3\16\3\35\3\4\3\4\3\4\3\4\3\5\6\5%\n\5\r")
@@ -20,17 +20,17 @@ def serializedATN():
         buf.write("\2\2\25\26\3\2\2\2\26\30\3\2\2\2\27\31\5\b\5\2\30\27\3")
         buf.write("\2\2\2\30\31\3\2\2\2\31\3\3\2\2\2\32\34\5\6\4\2\33\32")
         buf.write("\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36")
-        buf.write("\5\3\2\2\2\37 \7\13\2\2 !\7\7\2\2!\"\7\17\2\2\"\7\3\2")
-        buf.write("\2\2#%\5\n\6\2$#\3\2\2\2%&\3\2\2\2&$\3\2\2\2&\'\3\2\2")
-        buf.write("\2\'\t\3\2\2\2(*\7\17\2\2)+\5\f\7\2*)\3\2\2\2*+\3\2\2")
-        buf.write("\2+,\3\2\2\2,.\7\5\2\2-/\5\20\t\2.-\3\2\2\2./\3\2\2\2")
-        buf.write("/\13\3\2\2\2\60\61\7\b\2\2\61\66\5\16\b\2\62\63\7\6\2")
-        buf.write("\2\63\65\5\16\b\2\64\62\3\2\2\2\658\3\2\2\2\66\64\3\2")
-        buf.write("\2\2\66\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\4\2\2:")
-        buf.write("\r\3\2\2\2;<\7\13\2\2<=\7\7\2\2=>\7\f\2\2>\17\3\2\2\2")
-        buf.write("?D\5\22\n\2@A\7\6\2\2AC\5\22\n\2B@\3\2\2\2CF\3\2\2\2D")
-        buf.write("B\3\2\2\2DE\3\2\2\2E\21\3\2\2\2FD\3\2\2\2GH\7\f\2\2H\23")
-        buf.write("\3\2\2\2\n\25\30\35&*.\66D")
+        buf.write("\5\3\2\2\2\37 \7\13\2\2 !\7\7\2\2!\"\7\r\2\2\"\7\3\2\2")
+        buf.write("\2#%\5\n\6\2$#\3\2\2\2%&\3\2\2\2&$\3\2\2\2&\'\3\2\2\2")
+        buf.write("\'\t\3\2\2\2(*\7\r\2\2)+\5\f\7\2*)\3\2\2\2*+\3\2\2\2+")
+        buf.write(",\3\2\2\2,.\7\5\2\2-/\5\20\t\2.-\3\2\2\2./\3\2\2\2/\13")
+        buf.write("\3\2\2\2\60\61\7\b\2\2\61\66\5\16\b\2\62\63\7\6\2\2\63")
+        buf.write("\65\5\16\b\2\64\62\3\2\2\2\658\3\2\2\2\66\64\3\2\2\2\66")
+        buf.write("\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\4\2\2:\r\3\2\2")
+        buf.write("\2;<\7\13\2\2<=\7\7\2\2=>\7\f\2\2>\17\3\2\2\2?D\5\22\n")
+        buf.write("\2@A\7\6\2\2AC\5\22\n\2B@\3\2\2\2CF\3\2\2\2DB\3\2\2\2")
+        buf.write("DE\3\2\2\2E\21\3\2\2\2FD\3\2\2\2GH\7\f\2\2H\23\3\2\2\2")
+        buf.write("\n\25\30\35&*.\66D")
         return buf.getvalue()
 
 
@@ -49,8 +49,8 @@ class GradeSheetParser ( Parser ):
 
     symbolicNames = [ "<INVALID>", "BACKSLASH", "CLOSE_PARENTHESIS", "COLON", 
                       "COMMA", "EQUAL_SIGN", "OPEN_PARENTHESIS", "PERIOD", 
-                      "QUOTATION_MARK", "SIMPLE_WORD", "NUMBER", "DECIMAL", 
-                      "INTEGER", "STRING_WORD", "WHITESPACE" ]
+                      "QUOTATION_MARK", "SIMPLE_WORD", "NUMBER", "STRING_WORD", 
+                      "WHITESPACE" ]
 
     RULE_root = 0
     RULE_header = 1
@@ -76,10 +76,8 @@ class GradeSheetParser ( Parser ):
     QUOTATION_MARK=8
     SIMPLE_WORD=9
     NUMBER=10
-    DECIMAL=11
-    INTEGER=12
-    STRING_WORD=13
-    WHITESPACE=14
+    STRING_WORD=11
+    WHITESPACE=12
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
