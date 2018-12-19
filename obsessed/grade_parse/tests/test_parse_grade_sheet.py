@@ -23,8 +23,8 @@ def _relative_to_absolute_path(relative_path):
 """ Global definitions which are used in individual tests. """
 
 TEST_EMPTY_GRADE_SHEET = GradeSheet()
-TEST_SIMPLE_GRADE_SHEET = GradeSheet(None, [Category("Homework", grades=[Grade(None, 80), Grade(None, 90)]),
-                                            Category("Tests", grades=[Grade(None, 70), Grade(None, 60)])])
+TEST_SIMPLE_GRADE_SHEET = GradeSheet(None, [Category("Homework", grades=[Grade(80), Grade(90)]),
+                                            Category("Tests", grades=[Grade(70), Grade(60)])])
 
 # Names of files which contain certain types of grade sheet data.
 EMPTY_GRADE_SHEET_FILE_NAME = _relative_to_absolute_path("mock_grade_sheets/empty.gs")
@@ -73,7 +73,7 @@ class TestParse(unittest.TestCase):
     # Tests for verifying that the parser generates the correct structures.
 
     def test_body_no_keywords_with_no_header(self):
-        expected = GradeSheet(None, [Category("Quizzes", grades=[Grade(None, 50)])])
+        expected = GradeSheet(None, [Category("Quizzes", grades=[Grade(50)])])
         raw_input = "\"Quizzes\": 50"
         actual = ParseGradeSheet.from_string(raw_input)
         self.assertEqual(expected, actual)
@@ -86,29 +86,28 @@ class TestParse(unittest.TestCase):
 
     def test_grade_sheet_with_multiple_header_and_body(self):
         expected = GradeSheet({'name': 'Sample Grade Sheet', 'author': 'An Author'},
-                              [Category("Category 1", grades=[Grade(None, 10)]),
-                               Category("Category 2", grades=[Grade(None, 20), Grade(None, 30), Grade(None, 40)])])
+                              [Category("Category 1", grades=[Grade(10)]),
+                               Category("Category 2", grades=[Grade(20), Grade(30), Grade(40)])])
         actual = ParseGradeSheet.from_file(MULTIPLE_HEADER_AND_BODY_GRADE_SHEET_FILE_NAME)
         self.assertEqual(expected, actual)
 
     def test_local_grade_maximum_overrides(self):
         expected = GradeSheet(None, [Category("Homework",
-                                              grades=[Grade(None, 80), Grade(None, 90), Grade(None, 45, 50)])])
+                                              grades=[Grade(80), Grade(90), Grade(45, maximum=50)])])
         raw_input = "\"Homework\": 80, 90, 45/50"
         actual = ParseGradeSheet.from_string(raw_input)
         self.assertEqual(expected, actual)
 
     def test_empty_keywords(self):
-        expected = GradeSheet(None, [Category("Tests", {}, [Grade(None, 40)])])
+        expected = GradeSheet(None, [Category("Tests", {}, [Grade(40)])])
         raw_input = "\"Tests\"(): 40"
         actual = ParseGradeSheet.from_string(raw_input)
         self.assertEqual(expected, actual)
 
     def test_header_body_with_keywords(self):
         expected = GradeSheet({'author': 'Anonymous', 'name': '6.813 Grades'},
-                              [Category("Homework", {'weight': .4},
-                                        [Grade(None, 85), Grade(None, 67), Grade(None, 23)]),
-                               Category("Tests", {'weight': .5, 'max': 50}, [Grade(None, 46), Grade(None, 39)]),
-                               Category("Attendance", {'weight': .1}, [Grade(None, 75)])])
+                              [Category("Homework", {'weight': .4}, [Grade(85), Grade(67), Grade(23)]),
+                               Category("Tests", {'weight': .5, 'max': 50}, [Grade(46), Grade(39)]),
+                               Category("Attendance", {'weight': .1}, [Grade(75)])])
         actual = ParseGradeSheet.from_file(HEADER_BODY_WITH_KEYWORDS_GRADE_SHEET_FILE_NAME)
         self.assertEqual(expected, actual)

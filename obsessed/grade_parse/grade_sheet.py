@@ -69,16 +69,16 @@ class Grade(GradeSheetGeneric):
     Stores data relating to an individual grade in a Category.
     """
 
-    def __init__(self, name, value, maximum=100):
+    def __init__(self, value, name=None, maximum=100):
         """
         Each Grade contains:
-            - name: (str) the name of this Grade
             - value: (float) the score provided for this particular Grade
+            - name: (str) the name of this Grade
             - maximum: (float) the maximum amount of points possible on this assignment; default value is 100
         """
-        self.name = name
         self.value = value
+        self.name = name
         self.maximum = maximum
 
     def __repr__(self):
-        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.name, self.value, self.maximum)
+        return "{0}({1}, {2}, {3})".format(self.__class__.__name__, self.value, self.name, self.maximum)
