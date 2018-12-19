@@ -66,7 +66,9 @@ class GradeSheetVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by GradeSheetParser#grade.
     def visitGrade(self, ctx: GradeSheetParser.GradeContext):
         # TODO: Once names are implemented for grades, and maximums, update this.
-        return Grade(None, self._maybe_convert_to_number(str(ctx.NUMBER())))
+        # The presence of more than one number indicates that a local override to the maximum was provided.
+        maximum = self._maybe_convert_to_number(str(ctx.NUMBER()[-1])) if len(ctx.NUMBER()) > 1 else 100
+        return Grade(None, self._maybe_convert_to_number(str(ctx.NUMBER()[0])), maximum)
 
     @staticmethod
     def _maybe_convert_to_number(raw_value):

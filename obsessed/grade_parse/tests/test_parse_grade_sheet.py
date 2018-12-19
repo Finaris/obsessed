@@ -67,6 +67,11 @@ class TestParseFromString(unittest.TestCase):
 
 class TestParse(unittest.TestCase):
 
+    # Tests for verifying that incorrect grade sheets are caught (syntax errors are caught intrinsically by ANTLR).
+    # TODO: Implement these once custom logic is implemented.
+
+    # Tests for verifying that the parser generates the correct structures.
+
     def test_body_no_keywords_with_no_header(self):
         expected = GradeSheet(None, [Category("Quizzes", grades=[Grade(None, 50)])])
         raw_input = "\"Quizzes\": 50"
@@ -84,6 +89,13 @@ class TestParse(unittest.TestCase):
                               [Category("Category 1", grades=[Grade(None, 10)]),
                                Category("Category 2", grades=[Grade(None, 20), Grade(None, 30), Grade(None, 40)])])
         actual = ParseGradeSheet.from_file(MULTIPLE_HEADER_AND_BODY_GRADE_SHEET_FILE_NAME)
+        self.assertEqual(expected, actual)
+
+    def test_local_grade_maximum_overrides(self):
+        expected = GradeSheet(None, [Category("Homework",
+                                              grades=[Grade(None, 80), Grade(None, 90), Grade(None, 45, 50)])])
+        raw_input = "\"Homework\": 80, 90, 45/50"
+        actual = ParseGradeSheet.from_string(raw_input)
         self.assertEqual(expected, actual)
 
     def test_empty_keywords(self):

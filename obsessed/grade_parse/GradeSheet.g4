@@ -44,13 +44,14 @@ grades
     ;
 
 grade
-    : NUMBER
+    : NUMBER (FORWARD_SLASH NUMBER)?
     ;
 
 // ----- LEXER RULES -----
 
 // Constants which map to individual characters.
-BACKSLASH: '\\'
+BACKSLASH
+    : '\\'
     ;
 
 CLOSE_PARENTHESIS
@@ -67,6 +68,10 @@ COMMA
 
 EQUAL_SIGN
     : '='
+    ;
+
+FORWARD_SLASH
+    : '/'
     ;
 
 OPEN_PARENTHESIS
