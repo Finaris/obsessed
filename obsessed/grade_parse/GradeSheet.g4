@@ -74,12 +74,20 @@ FORWARD_SLASH
     : '/'
     ;
 
+MINUS
+    : '-'
+    ;
+
 OPEN_PARENTHESIS
     : '('
     ;
 
 PERIOD
     : '.'
+    ;
+
+PLUS
+    : '+'
     ;
 
 QUOTATION_MARK
@@ -93,8 +101,7 @@ SIMPLE_WORD
     ;
 
 NUMBER
-    : ([0-9]+ PERIOD? [0-9]*)
-    | ([0-9]* PERIOD? [0-9]+)
+    : (PLUS | MINUS)? (([0-9]+ PERIOD? [0-9]*) | ([0-9]* PERIOD? [0-9]+))
     ;
 
 STRING_WORD

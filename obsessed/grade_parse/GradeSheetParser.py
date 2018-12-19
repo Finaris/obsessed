@@ -7,7 +7,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21")
         buf.write("O\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\4\n\t\n\3\2\5\2\26\n\2\3\2\5\2\31\n\2\3\3")
         buf.write("\6\3\34\n\3\r\3\16\3\35\3\4\3\4\3\4\3\4\3\5\6\5%\n\5\r")
@@ -20,19 +20,19 @@ def serializedATN():
         buf.write("\2\24\26\5\4\3\2\25\24\3\2\2\2\25\26\3\2\2\2\26\30\3\2")
         buf.write("\2\2\27\31\5\b\5\2\30\27\3\2\2\2\30\31\3\2\2\2\31\3\3")
         buf.write("\2\2\2\32\34\5\6\4\2\33\32\3\2\2\2\34\35\3\2\2\2\35\33")
-        buf.write("\3\2\2\2\35\36\3\2\2\2\36\5\3\2\2\2\37 \7\f\2\2 !\7\7")
-        buf.write("\2\2!\"\7\16\2\2\"\7\3\2\2\2#%\5\n\6\2$#\3\2\2\2%&\3\2")
-        buf.write("\2\2&$\3\2\2\2&\'\3\2\2\2\'\t\3\2\2\2(*\7\16\2\2)+\5\f")
+        buf.write("\3\2\2\2\35\36\3\2\2\2\36\5\3\2\2\2\37 \7\16\2\2 !\7\7")
+        buf.write("\2\2!\"\7\20\2\2\"\7\3\2\2\2#%\5\n\6\2$#\3\2\2\2%&\3\2")
+        buf.write("\2\2&$\3\2\2\2&\'\3\2\2\2\'\t\3\2\2\2(*\7\20\2\2)+\5\f")
         buf.write("\7\2*)\3\2\2\2*+\3\2\2\2+,\3\2\2\2,.\7\5\2\2-/\5\20\t")
-        buf.write("\2.-\3\2\2\2./\3\2\2\2/\13\3\2\2\2\609\7\t\2\2\61\66\5")
+        buf.write("\2.-\3\2\2\2./\3\2\2\2/\13\3\2\2\2\609\7\n\2\2\61\66\5")
         buf.write("\16\b\2\62\63\7\6\2\2\63\65\5\16\b\2\64\62\3\2\2\2\65")
         buf.write("8\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\67:\3\2\2\28\66")
         buf.write("\3\2\2\29\61\3\2\2\29:\3\2\2\2:;\3\2\2\2;<\7\4\2\2<\r")
-        buf.write("\3\2\2\2=>\7\f\2\2>?\7\7\2\2?@\7\r\2\2@\17\3\2\2\2AF\5")
-        buf.write("\22\n\2BC\7\6\2\2CE\5\22\n\2DB\3\2\2\2EH\3\2\2\2FD\3\2")
-        buf.write("\2\2FG\3\2\2\2G\21\3\2\2\2HF\3\2\2\2IL\7\r\2\2JK\7\b\2")
-        buf.write("\2KM\7\r\2\2LJ\3\2\2\2LM\3\2\2\2M\23\3\2\2\2\f\25\30\35")
-        buf.write("&*.\669FL")
+        buf.write("\3\2\2\2=>\7\16\2\2>?\7\7\2\2?@\7\17\2\2@\17\3\2\2\2A")
+        buf.write("F\5\22\n\2BC\7\6\2\2CE\5\22\n\2DB\3\2\2\2EH\3\2\2\2FD")
+        buf.write("\3\2\2\2FG\3\2\2\2G\21\3\2\2\2HF\3\2\2\2IL\7\17\2\2JK")
+        buf.write("\7\b\2\2KM\7\17\2\2LJ\3\2\2\2LM\3\2\2\2M\23\3\2\2\2\f")
+        buf.write("\25\30\35&*.\669FL")
         return buf.getvalue()
 
 
@@ -47,12 +47,12 @@ class GradeSheetParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'\\'", "')'", "':'", "','", "'='", "'/'", 
-                     "'('", "'.'", "'\"'" ]
+                     "'-'", "'('", "'.'", "'+'", "'\"'" ]
 
     symbolicNames = [ "<INVALID>", "BACKSLASH", "CLOSE_PARENTHESIS", "COLON", 
-                      "COMMA", "EQUAL_SIGN", "FORWARD_SLASH", "OPEN_PARENTHESIS", 
-                      "PERIOD", "QUOTATION_MARK", "SIMPLE_WORD", "NUMBER", 
-                      "STRING_WORD", "WHITESPACE" ]
+                      "COMMA", "EQUAL_SIGN", "FORWARD_SLASH", "MINUS", "OPEN_PARENTHESIS", 
+                      "PERIOD", "PLUS", "QUOTATION_MARK", "SIMPLE_WORD", 
+                      "NUMBER", "STRING_WORD", "WHITESPACE" ]
 
     RULE_root = 0
     RULE_header = 1
@@ -74,13 +74,15 @@ class GradeSheetParser ( Parser ):
     COMMA=4
     EQUAL_SIGN=5
     FORWARD_SLASH=6
-    OPEN_PARENTHESIS=7
-    PERIOD=8
-    QUOTATION_MARK=9
-    SIMPLE_WORD=10
-    NUMBER=11
-    STRING_WORD=12
-    WHITESPACE=13
+    MINUS=7
+    OPEN_PARENTHESIS=8
+    PERIOD=9
+    PLUS=10
+    QUOTATION_MARK=11
+    SIMPLE_WORD=12
+    NUMBER=13
+    STRING_WORD=14
+    WHITESPACE=15
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
