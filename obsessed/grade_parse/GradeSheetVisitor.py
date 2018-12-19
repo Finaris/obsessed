@@ -14,7 +14,7 @@ class GradeSheetVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by GradeSheetParser#root.
     def visitRoot(self, ctx: GradeSheetParser.RootContext):
         header, body = None, None
-        for child in ctx.children:
+        for child in ctx.getChildren():
             if isinstance(child, GradeSheetParser.HeaderContext):
                 header = self.visit(child)
             elif isinstance(child, GradeSheetParser.BodyContext):
@@ -23,7 +23,7 @@ class GradeSheetVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by GradeSheetParser#header.
     def visitHeader(self, ctx: GradeSheetParser.HeaderContext):
-        keywords = [self.visit(child) for child in ctx.children
+        keywords = [self.visit(child) for child in ctx.getChildren()
                     if isinstance(child, GradeSheetParser.Header_mappingContext)]
         return {key: value for keyword in keywords for key, value in keyword.items()}
 
@@ -33,13 +33,13 @@ class GradeSheetVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by GradeSheetParser#body.
     def visitBody(self, ctx: GradeSheetParser.BodyContext):
-        return [self.visit(child) for child in ctx.children]
+        return [self.visit(child) for child in ctx.getChildren()]
 
     # Visit a parse tree produced by GradeSheetParser#category.
     def visitCategory(self, ctx: GradeSheetParser.CategoryContext):
         # Go through each of the items in the Category node and process them as needed.
-        name, keywords, grades = str(ctx.getChild(0)), None, None
-        for child in ctx.children[1:]:
+        name, keywords, grades = str(ctx.getChild(0))[1:-1], None, None
+        for child in ctx.getChildren():
             if isinstance(child, GradeSheetParser.KeywordsContext):
                 keywords = self.visit(child)
             elif isinstance(child, GradeSheetParser.GradesContext):
@@ -49,7 +49,8 @@ class GradeSheetVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by GradeSheetParser#keywords.
     def visitKeywords(self, ctx: GradeSheetParser.KeywordsContext):
         # Collect all keywords and package them into a single dictionary.
-        keywords = [self.visit(child) for child in ctx.children if isinstance(child, GradeSheetParser.KeywordContext)]
+        keywords = [self.visit(child) for child in ctx.getChildren()
+                    if isinstance(child, GradeSheetParser.KeywordContext)]
         return {key: value for keyword in keywords for key, value in keyword.items()}
 
     # Visit a parse tree produced by GradeSheetParser#keyword.
@@ -60,7 +61,7 @@ class GradeSheetVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by GradeSheetParser#grades.
     def visitGrades(self, ctx: GradeSheetParser.GradesContext):
         # Iterate in steps of two to skip commas.
-        return [self.visit(child) for child in ctx.children if isinstance(child, GradeSheetParser.GradeContext)]
+        return [self.visit(child) for child in ctx.getChildren() if isinstance(child, GradeSheetParser.GradeContext)]
 
     # Visit a parse tree produced by GradeSheetParser#grade.
     def visitGrade(self, ctx: GradeSheetParser.GradeContext):

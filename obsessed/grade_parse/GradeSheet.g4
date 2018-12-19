@@ -32,7 +32,7 @@ category
     ;
 
 keywords
-    : OPEN_PARENTHESIS keyword (COMMA keyword)* CLOSE_PARENTHESIS
+    : OPEN_PARENTHESIS (keyword (COMMA keyword)*)? CLOSE_PARENTHESIS
     ;
 
 keyword

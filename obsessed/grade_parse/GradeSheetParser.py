@@ -8,29 +8,30 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16")
-        buf.write("J\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("L\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\4\n\t\n\3\2\5\2\26\n\2\3\2\5\2\31\n\2\3\3")
         buf.write("\6\3\34\n\3\r\3\16\3\35\3\4\3\4\3\4\3\4\3\5\6\5%\n\5\r")
         buf.write("\5\16\5&\3\6\3\6\5\6+\n\6\3\6\3\6\5\6/\n\6\3\7\3\7\3\7")
-        buf.write("\3\7\7\7\65\n\7\f\7\16\78\13\7\3\7\3\7\3\b\3\b\3\b\3\b")
-        buf.write("\3\t\3\t\3\t\7\tC\n\t\f\t\16\tF\13\t\3\n\3\n\3\n\2\2\13")
-        buf.write("\2\4\6\b\n\f\16\20\22\2\2\2H\2\25\3\2\2\2\4\33\3\2\2\2")
-        buf.write("\6\37\3\2\2\2\b$\3\2\2\2\n(\3\2\2\2\f\60\3\2\2\2\16;\3")
-        buf.write("\2\2\2\20?\3\2\2\2\22G\3\2\2\2\24\26\5\4\3\2\25\24\3\2")
-        buf.write("\2\2\25\26\3\2\2\2\26\30\3\2\2\2\27\31\5\b\5\2\30\27\3")
-        buf.write("\2\2\2\30\31\3\2\2\2\31\3\3\2\2\2\32\34\5\6\4\2\33\32")
-        buf.write("\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36")
-        buf.write("\5\3\2\2\2\37 \7\13\2\2 !\7\7\2\2!\"\7\r\2\2\"\7\3\2\2")
-        buf.write("\2#%\5\n\6\2$#\3\2\2\2%&\3\2\2\2&$\3\2\2\2&\'\3\2\2\2")
-        buf.write("\'\t\3\2\2\2(*\7\r\2\2)+\5\f\7\2*)\3\2\2\2*+\3\2\2\2+")
-        buf.write(",\3\2\2\2,.\7\5\2\2-/\5\20\t\2.-\3\2\2\2./\3\2\2\2/\13")
-        buf.write("\3\2\2\2\60\61\7\b\2\2\61\66\5\16\b\2\62\63\7\6\2\2\63")
-        buf.write("\65\5\16\b\2\64\62\3\2\2\2\658\3\2\2\2\66\64\3\2\2\2\66")
-        buf.write("\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\4\2\2:\r\3\2\2")
-        buf.write("\2;<\7\13\2\2<=\7\7\2\2=>\7\f\2\2>\17\3\2\2\2?D\5\22\n")
-        buf.write("\2@A\7\6\2\2AC\5\22\n\2B@\3\2\2\2CF\3\2\2\2DB\3\2\2\2")
-        buf.write("DE\3\2\2\2E\21\3\2\2\2FD\3\2\2\2GH\7\f\2\2H\23\3\2\2\2")
-        buf.write("\n\25\30\35&*.\66D")
+        buf.write("\3\7\7\7\65\n\7\f\7\16\78\13\7\5\7:\n\7\3\7\3\7\3\b\3")
+        buf.write("\b\3\b\3\b\3\t\3\t\3\t\7\tE\n\t\f\t\16\tH\13\t\3\n\3\n")
+        buf.write("\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\2\2K\2\25\3\2\2\2\4")
+        buf.write("\33\3\2\2\2\6\37\3\2\2\2\b$\3\2\2\2\n(\3\2\2\2\f\60\3")
+        buf.write("\2\2\2\16=\3\2\2\2\20A\3\2\2\2\22I\3\2\2\2\24\26\5\4\3")
+        buf.write("\2\25\24\3\2\2\2\25\26\3\2\2\2\26\30\3\2\2\2\27\31\5\b")
+        buf.write("\5\2\30\27\3\2\2\2\30\31\3\2\2\2\31\3\3\2\2\2\32\34\5")
+        buf.write("\6\4\2\33\32\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2\35\36")
+        buf.write("\3\2\2\2\36\5\3\2\2\2\37 \7\13\2\2 !\7\7\2\2!\"\7\r\2")
+        buf.write("\2\"\7\3\2\2\2#%\5\n\6\2$#\3\2\2\2%&\3\2\2\2&$\3\2\2\2")
+        buf.write("&\'\3\2\2\2\'\t\3\2\2\2(*\7\r\2\2)+\5\f\7\2*)\3\2\2\2")
+        buf.write("*+\3\2\2\2+,\3\2\2\2,.\7\5\2\2-/\5\20\t\2.-\3\2\2\2./")
+        buf.write("\3\2\2\2/\13\3\2\2\2\609\7\b\2\2\61\66\5\16\b\2\62\63")
+        buf.write("\7\6\2\2\63\65\5\16\b\2\64\62\3\2\2\2\658\3\2\2\2\66\64")
+        buf.write("\3\2\2\2\66\67\3\2\2\2\67:\3\2\2\28\66\3\2\2\29\61\3\2")
+        buf.write("\2\29:\3\2\2\2:;\3\2\2\2;<\7\4\2\2<\r\3\2\2\2=>\7\13\2")
+        buf.write("\2>?\7\7\2\2?@\7\f\2\2@\17\3\2\2\2AF\5\22\n\2BC\7\6\2")
+        buf.write("\2CE\5\22\n\2DB\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2\2")
+        buf.write("G\21\3\2\2\2HF\3\2\2\2IJ\7\f\2\2J\23\3\2\2\2\13\25\30")
+        buf.write("\35&*.\669F")
         return buf.getvalue()
 
 
@@ -371,15 +372,15 @@ class GradeSheetParser ( Parser ):
         def OPEN_PARENTHESIS(self):
             return self.getToken(GradeSheetParser.OPEN_PARENTHESIS, 0)
 
+        def CLOSE_PARENTHESIS(self):
+            return self.getToken(GradeSheetParser.CLOSE_PARENTHESIS, 0)
+
         def keyword(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(GradeSheetParser.KeywordContext)
             else:
                 return self.getTypedRuleContext(GradeSheetParser.KeywordContext,i)
 
-
-        def CLOSE_PARENTHESIS(self):
-            return self.getToken(GradeSheetParser.CLOSE_PARENTHESIS, 0)
 
         def COMMA(self, i:int=None):
             if i is None:
@@ -408,21 +409,27 @@ class GradeSheetParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 46
             self.match(GradeSheetParser.OPEN_PARENTHESIS)
-            self.state = 47
-            self.keyword()
-            self.state = 52
+            self.state = 55
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==GradeSheetParser.COMMA:
-                self.state = 48
-                self.match(GradeSheetParser.COMMA)
-                self.state = 49
+            if _la==GradeSheetParser.SIMPLE_WORD:
+                self.state = 47
                 self.keyword()
-                self.state = 54
+                self.state = 52
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
+                while _la==GradeSheetParser.COMMA:
+                    self.state = 48
+                    self.match(GradeSheetParser.COMMA)
+                    self.state = 49
+                    self.keyword()
+                    self.state = 54
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
 
-            self.state = 55
+
+
+            self.state = 57
             self.match(GradeSheetParser.CLOSE_PARENTHESIS)
         except RecognitionException as re:
             localctx.exception = re
@@ -465,11 +472,11 @@ class GradeSheetParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_keyword)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 57
-            self.match(GradeSheetParser.SIMPLE_WORD)
-            self.state = 58
-            self.match(GradeSheetParser.EQUAL_SIGN)
             self.state = 59
+            self.match(GradeSheetParser.SIMPLE_WORD)
+            self.state = 60
+            self.match(GradeSheetParser.EQUAL_SIGN)
+            self.state = 61
             self.match(GradeSheetParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
@@ -517,17 +524,17 @@ class GradeSheetParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 61
+            self.state = 63
             self.grade()
-            self.state = 66
+            self.state = 68
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==GradeSheetParser.COMMA:
-                self.state = 62
+                self.state = 64
                 self.match(GradeSheetParser.COMMA)
-                self.state = 63
+                self.state = 65
                 self.grade()
-                self.state = 68
+                self.state = 70
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -566,7 +573,7 @@ class GradeSheetParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_grade)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 69
+            self.state = 71
             self.match(GradeSheetParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re

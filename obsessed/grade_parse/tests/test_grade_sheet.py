@@ -1,11 +1,12 @@
 import unittest
+
 from .. import Category
 from .. import Grade
 from .. import GradeSheet
 from .. import GradeSheetGeneric
 
 
-""" Global definitions which are used in various unit tests. """
+""" Global definitions which are used in individual tests. """
 
 # Class definitions which inherit from GradeSheetGeneric and have varying degrees of arguments.
 
@@ -60,6 +61,7 @@ TEST_CATEGORY_TWO = Category(TEST_NAME_TWO, TEST_KEYWORDS, [TEST_GRADE_HOMEWORK_
 TEST_GRADE_SHEET_ONE = GradeSheet(TEST_HEADER, [TEST_CATEGORY_ONE, TEST_CATEGORY_TWO])
 TEST_GRADE_SHEET_ONE_DUPE = GradeSheet(TEST_HEADER, [TEST_CATEGORY_ONE, TEST_CATEGORY_TWO])
 TEST_GRADE_SHEET_TWO = GradeSheet({}, [TEST_CATEGORY_TWO])
+
 
 """ Tests """
 
@@ -183,7 +185,3 @@ class TestGrade(unittest.TestCase):
                                                                 GradeSheetGeneric._STRING_FIELD_SEPARATOR,
                                                                 TEST_VALUE_ONE)
         self.assertEqual(expected, actual)
-
-
-if __name__ == "__main__":
-    unittest.main()
